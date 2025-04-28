@@ -26,8 +26,12 @@
 *.a
 *.lib
 
+# Visual Studio
+/.vs
+
 # Executables
 *.exe
 *.out
 *.app
 /_Solution
+/out

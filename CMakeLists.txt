@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_CONFIGURATION_TYPES Debug Release)
 
@@ -30,3 +30,6 @@ add_subdirectory(ThirdParty/glm)
 set_target_properties(glm PROPERTIES FOLDER ThirdParty/glm)
 
 add_subdirectory(CentsEngine)
+
+# TODO: Allow exlusion of Projects directory
+add_subdirectory(Projects)
