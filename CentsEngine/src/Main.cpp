@@ -1,6 +1,6 @@
 #include "Application.h"
 
-int WinMain()
+int main()
 {
     Application* app = CreateApplication();
     app->Init();
@@ -8,3 +8,10 @@ int WinMain()
     app->Loop();
     app->UnLoad();
 }
+
+#ifdef WIN32
+int WinMain()
+{
+    main();
+}
+#endif
