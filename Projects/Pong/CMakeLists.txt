@@ -1,16 +1,25 @@
 set(ProjectName Pong)
 set(SourceFiles  "src/Pong.cpp" "src/Pong.h")
 
+string(REPLACE "${CMAKE_SOURCE_DIR}/" "" RelativeToSourceDirectory "${CMAKE_CURRENT_SOURCE_DIR}")
+set(BuildDirectory "${CMAKE_BINARY_DIR}/${RelativeToSourceDirectory}")
+
 add_executable(${ProjectName} WIN32 ${SourceFiles})
 target_link_libraries(${ProjectName} PUBLIC CentsEngine)
 
-string(REPLACE "${CMAKE_SOURCE_DIR}/" "" RelativeFolder "${CMAKE_CURRENT_SOURCE_DIR}")
-string(REPLACE "${ProjectName}" "" RelativeFolder "${RelativeFolder}")
-set_target_properties(${ProjectName} PROPERTIES FOLDER "${RelativeFolder}")
+string(REPLACE "${ProjectName}" "" ProjectParentDirectory "${RelativeToSourceDirectory}")
+set_target_properties(${ProjectName} PROPERTIES FOLDER "${ProjectParentDirectory}")
 
-set(LinkSource "${CMAKE_CURRENT_SOURCE_DIR}/content")
-set(LinkDestination "${CMAKE_BINARY_DIR}/content")
+set(ReleaseDir $<$<CONFIG:Release>:Release>)
+set(DebugDir $<$<CONFIG:Debug>:Debug>)
+set(ConfigDir "${BuildDirectory}/${ReleaseDir}${DebugDir}/content")
+
 add_custom_command( 
     TARGET ${ProjectName} 
     POST_BUILD COMMAND ${CMAKE_COMMAND} 
-        -E create_symlink ${LinkSource} ${LinkDestination})
+        -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/content" ${ConfigDir})
+
+        add_custom_command( 
+    TARGET ${ProjectName} 
+    POST_BUILD COMMAND ${CMAKE_COMMAND} 
+        -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/content" "${BuildDirectory}/content")

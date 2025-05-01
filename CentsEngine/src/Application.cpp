@@ -3,7 +3,7 @@
 #include <vector>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Shader.cpp>
+#include <Shader.h>
 
 // All of this is TEMPORARY
 GLFWwindow* window;
@@ -46,8 +46,7 @@ void Application::Init()
 
 void Application::Load()
 {
-    shader = new Shader("../content/shaders/white.vert", "../content/shaders/white.frag");
-
+    shader = new Shader("content/shaders/white.vert", "content/shaders/white.frag");
 
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);

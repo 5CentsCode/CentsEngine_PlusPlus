@@ -1,13 +1,15 @@
 set(ProjectName CentsEngine)
 set(IncludeFiles
-    include/Cents/Common.h
+    include/Cents/DebugConsole.h
     include/Cents/Application.h
+    include/Cents/Common.h
     include/Cents/Shader.h
     include/Cents/Window.h)
 
 set(SourceFiles
-    src/Main.cpp
     src/Application.cpp
+    src/DebugConsole.cpp
+    src/Main.cpp
     src/Shader.cpp
     src/Window.cpp)
 
