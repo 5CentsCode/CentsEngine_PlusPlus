@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "Common.h"
 #include <windows.h>
 #include <filesystem>
 #include "DebugConsole.h"
@@ -6,17 +7,19 @@
 int main()
 {
 #ifdef _DEBUG
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+
     DebugConsole::CreateNewConsole(1024);
 #endif // _DEBUG
-
-    std::filesystem::path cwd = std::filesystem::current_path();
-    printf("%s\n", cwd.string().c_str());
 
     Application* app = CreateApplication();
     app->Init();
     app->Load();
     app->Loop();
     app->UnLoad();
+
+    delete app;
 
 #ifdef _DEBUG
     DebugConsole::ReleaseConsole();

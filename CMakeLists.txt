@@ -29,6 +29,9 @@ set_target_properties(update_mappings PROPERTIES FOLDER ThirdParty/GLFW3)
 add_subdirectory(ThirdParty/glm)
 set_target_properties(glm PROPERTIES FOLDER ThirdParty/glm)
 
+add_subdirectory(ThirdParty/tinyobjloader)
+set_target_properties(tinyobjloader PROPERTIES FOLDER ThirdParty/TinyObjLoader)
+
 add_subdirectory(CentsEngine)
 
 # TODO: Allow exlusion of Projects directory

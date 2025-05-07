@@ -1,4 +1,5 @@
 #include "Pong.h"
+#include <Cents/Common.h>
 
 void Pong::Init()
 {
@@ -8,11 +9,16 @@ void Pong::Init()
 void Pong::Load()
 {
     Application::Load();
+
+    m_shader = new Shader("content/shaders/white.vert", "content/shaders/white.frag");
+    m_model = new Model("content/models/quad.obj");
 }
 
 void Pong::UnLoad()
 {
     Application::UnLoad();
+    delete m_shader;
+    delete m_model;
 }
 
 void Pong::UpdateFrame()
@@ -23,4 +29,7 @@ void Pong::UpdateFrame()
 void Pong::RenderFrame()
 {
     Application::RenderFrame();
+
+    m_shader->Bind();
+    m_model->Draw();
 }

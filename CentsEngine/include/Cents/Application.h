@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "Common.h"
-#include <glm/gtc/type_ptr.hpp>
 
 class Application
 {
