@@ -17,8 +17,7 @@ int main()
     app->Init();
     app->Load();
     app->Loop();
-    app->UnLoad();
-
+    app->Unload();
     delete app;
 
 #ifdef _DEBUG

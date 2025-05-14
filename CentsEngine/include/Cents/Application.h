@@ -14,7 +14,7 @@ protected:
 
     virtual void Init();
     virtual void Load();
-    virtual void UnLoad();
+    virtual void Unload();
 
     virtual void UpdateFrame();
     virtual void RenderFrame();

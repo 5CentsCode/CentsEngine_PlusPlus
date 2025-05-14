@@ -14,9 +14,9 @@ void Pong::Load()
     m_model = new Model("content/models/quad.obj");
 }
 
-void Pong::UnLoad()
+void Pong::Unload()
 {
-    Application::UnLoad();
+    Application::Unload();
     delete m_shader;
     delete m_model;
 }

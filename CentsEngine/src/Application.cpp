@@ -31,7 +31,7 @@ void Application::Load()
 {
 }
 
-void Application::UnLoad()
+void Application::Unload()
 {
     glfwDestroyWindow(window);
     glfwTerminate();

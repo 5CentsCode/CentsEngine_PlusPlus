@@ -7,7 +7,7 @@ class Pong : public Application
 protected:
     void Init() override;
     void Load() override;
-    void UnLoad() override;
+    void Unload() override;
 
     void UpdateFrame() override;
     void RenderFrame() override;
