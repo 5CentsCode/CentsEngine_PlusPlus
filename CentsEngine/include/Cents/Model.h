@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Common.h"
 #include "Mesh.h"
 
 class Model

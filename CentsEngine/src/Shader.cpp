@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <fstream>
 #include <glad/glad.h>
+#include <glm/gtc/type_ptr.hpp>
 
 Shader::Shader(const std::string& vertexFile, const std::string& fragmentFile)
 {
@@ -44,6 +45,18 @@ int32 Shader::CreateShader(int32 shaderType, const std::string& filepath)
 void Shader::Bind()
 {
     glUseProgram(m_id);
+}
+
+int32 Shader::GetUniformLocation(const char* name) const
+{
+    int uniformLocation = glGetUniformLocation(m_id, name);
+    return uniformLocation;
+}
+
+void Shader::SetUniform(const char* name, const glm::mat4& value) const
+{
+    int32 uniformLocation = GetUniformLocation(name);
+    glUniformMatrix4fv(uniformLocation, 1, false, glm::value_ptr(value));
 }
 
 void Shader::AttachAndLinkShaders(int32* shaderIds, int32 shaderCount)

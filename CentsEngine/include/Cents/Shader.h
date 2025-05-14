@@ -1,6 +1,6 @@
 #pragma once
-#include "Common.h"
 #include <string>
+#include "Common.h"
 
 class Shader
 {
@@ -9,6 +9,10 @@ public:
     ~Shader();
 
     void Bind();
+
+    int32 GetUniformLocation(const char* name) const;
+
+    void SetUniform(const char* name, const glm::mat4& value) const;
 
 private:
     void AttachAndLinkShaders(int32* shaderIds, int32 shaderCount);
