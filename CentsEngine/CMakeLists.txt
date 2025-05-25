@@ -3,9 +3,12 @@ set(IncludeFiles
     include/Cents/Application.h
     include/Cents/Common.h
     include/Cents/DebugConsole.h
+    include/Cents/Input.h
+    include/Cents/KeyCodes.h
     include/Cents/Mesh.h
     include/Cents/Model.h
     include/Cents/Shader.h
+    include/Cents/Window.h
 
     include/Cents/Component/Camera.h
     include/Cents/Component/Transform.h
@@ -14,10 +17,12 @@ set(IncludeFiles
 set(SourceFiles
     src/Application.cpp
     src/DebugConsole.cpp
+    src/Input.cpp
     src/Main.cpp
     src/Mesh.cpp
     src/Model.cpp
     src/Shader.cpp
+    src/Window.cpp
 
     src/Component/Camera.cpp
     src/Component/Transform.cpp

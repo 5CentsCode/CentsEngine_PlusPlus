@@ -1,5 +1,9 @@
 set(ProjectName Pong)
-set(SourceFiles  "src/Pong.cpp" "src/Pong.h")
+set(SourceFiles 
+    "src/Ball.h"
+    "src/Paddle.h"
+    "src/Pong.h" "src/Pong.cpp"
+)
 
 string(REPLACE "${CMAKE_SOURCE_DIR}/" "" RelativeToSourceDirectory "${CMAKE_CURRENT_SOURCE_DIR}")
 set(BuildDirectory "${CMAKE_BINARY_DIR}/${RelativeToSourceDirectory}")

@@ -1,12 +1,8 @@
 #include "Application.h"
-#include "Common.h"
-#include <vector>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <Shader.h>
-
-// All of this is TEMPORARY
-GLFWwindow* window;
+#include "Common.h"
+#include "Input.h"
 
 Application::Application()
 {
@@ -14,17 +10,7 @@ Application::Application()
 
 void Application::Init()
 {
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    window = glfwCreateWindow(800, 600, "Hello Window", NULL, NULL);
-    glfwMakeContextCurrent(window);
-
-    gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-
-    glViewport(0, 0, 800, 600);
+    m_window = new Window();
 }
 
 void Application::Load()
@@ -33,28 +19,42 @@ void Application::Load()
 
 void Application::Unload()
 {
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    delete m_window;
 }
 
-void Application::UpdateFrame()
+void Application::UpdateFrame(float deltaTime)
 {
+    UNUSED_PARAM(deltaTime);
 }
 
-void Application::RenderFrame()
+void Application::RenderFrame(float deltaTime)
 {
+    UNUSED_PARAM(deltaTime);
 }
 
 void Application::Loop()
 {
-    while (glfwWindowShouldClose(window) == false)
+    long frame = 0;
+    float lastFrameTime = (float)glfwGetTime();
+    float currentFrameTime = lastFrameTime;
+    float deltaTime = currentFrameTime - lastFrameTime;
+
+    while (m_window->ShouldClose() == false)
     {
-        glfwPollEvents();
+        frame++;
+        lastFrameTime = currentFrameTime;
+        currentFrameTime = (float)glfwGetTime();
+        deltaTime = currentFrameTime - lastFrameTime;
 
-        UpdateFrame();
+        Input::PollInputEvents();
 
-        RenderFrame();
+        UpdateFrame(deltaTime);
 
-        glfwSwapBuffers(window);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        RenderFrame(deltaTime);
+
+        m_window->SwapBuffers();
     }
 }
