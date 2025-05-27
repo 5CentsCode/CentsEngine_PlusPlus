@@ -13,6 +13,7 @@ public:
     int32 GetUniformLocation(const char* name) const;
 
     void SetUniform(const char* name, const glm::mat4& value) const;
+    void SetUniform(const char* name, const int32& value) const;
 
 private:
     void AttachAndLinkShaders(int32* shaderIds, int32 shaderCount);

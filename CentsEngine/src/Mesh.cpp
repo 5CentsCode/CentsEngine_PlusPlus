@@ -53,7 +53,7 @@ void Mesh::Upload()
     glGenBuffers(1, &m_vbos[index]);
     glBindBuffer(GL_ARRAY_BUFFER, m_vbos[index]);
     glBufferData(GL_ARRAY_BUFFER, TexCoords.size() * sizeof(glm::vec2), TexCoords.data(), GL_STATIC_DRAW);
-    glVertexAttribPointer(index, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec2), 0);
+    glVertexAttribPointer(index, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec2), 0);
     glEnableVertexAttribArray(index);
 
     // Indices

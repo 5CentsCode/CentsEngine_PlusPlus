@@ -8,6 +8,7 @@ set(IncludeFiles
     include/Cents/Mesh.h
     include/Cents/Model.h
     include/Cents/Shader.h
+    include/Cents/Texture.h
     include/Cents/Window.h
 
     include/Cents/Component/Camera.h
@@ -22,6 +23,7 @@ set(SourceFiles
     src/Mesh.cpp
     src/Model.cpp
     src/Shader.cpp
+    src/Texture.cpp
     src/Window.cpp
 
     src/Component/Camera.cpp
@@ -29,7 +31,7 @@ set(SourceFiles
 )
 
 add_library(${ProjectName} ${SourceFiles} ${IncludeFiles})
-target_link_libraries(${ProjectName} PUBLIC glm)
+target_link_libraries(${ProjectName} PUBLIC glm stb)
 target_link_libraries(${ProjectName} PRIVATE glad glfw tinyobjloader)
 
 target_include_directories(${ProjectName} PUBLIC include/)

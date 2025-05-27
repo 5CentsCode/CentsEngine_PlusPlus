@@ -29,10 +29,13 @@ set_target_properties(update_mappings PROPERTIES FOLDER ThirdParty/GLFW3)
 add_subdirectory(ThirdParty/glm)
 set_target_properties(glm PROPERTIES FOLDER ThirdParty/glm)
 
+file(TOUCH ThirdParty/stb/_.cpp)
+add_library(stb STATIC ThirdParty/stb/stb_image.h ThirdParty/stb/_.cpp)
+target_include_directories(stb PUBLIC ThirdParty/stb/)
+set_target_properties(stb PROPERTIES FOLDER ThirdParty/stb)
+
 add_subdirectory(ThirdParty/tinyobjloader)
 set_target_properties(tinyobjloader PROPERTIES FOLDER ThirdParty/TinyObjLoader)
 
 add_subdirectory(CentsEngine)
-
-# TODO: Allow exlusion of Projects directory
 add_subdirectory(Projects)

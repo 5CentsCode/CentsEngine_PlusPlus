@@ -59,6 +59,12 @@ void Shader::SetUniform(const char* name, const glm::mat4& value) const
     glUniformMatrix4fv(uniformLocation, 1, false, glm::value_ptr(value));
 }
 
+void Shader::SetUniform(const char* name, const int32& value) const
+{
+    int32 uniformLocation = GetUniformLocation(name);
+    glUniform1i(uniformLocation, value);
+}
+
 void Shader::AttachAndLinkShaders(int32* shaderIds, int32 shaderCount)
 {
     for (int32 i = 0; i < shaderCount; i++)
