@@ -56,6 +56,9 @@ Window::Window()
     glfwShowWindow(m_window);
 
     glViewport(0, 0, width, height);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
 }
 
 Window::~Window()

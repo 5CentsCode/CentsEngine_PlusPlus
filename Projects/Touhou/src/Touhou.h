@@ -19,13 +19,21 @@ protected:
     void RenderFrame(float deltaTime) override;
 
 private:
-    Shader* m_shader = nullptr;
-    Model* m_model = nullptr;
-    Texture* m_texture = nullptr;
-    Component::Camera m_camera;
-    Component::Transform m_cameraTransform;
+    Shader* m_textureShader = nullptr;
+    Shader* m_whiteShader = nullptr;
 
-    Component::Transform m_characterTransform;
+    Model* m_quadModel = nullptr;
+    Model* m_planeModel = nullptr;
+
+    Texture* m_texture = nullptr;
+
+    bool m_debugMode = false;
+    Component::Camera m_camera;
+    Component::Transform m_debugCamTransform;
+    Component::Transform m_gameCamTransform;
+
+    Component::Transform m_playerTransform;
+    Component::Transform m_planeTransform;
 };
 
 CREATE_APPLICATION(Touhou);
