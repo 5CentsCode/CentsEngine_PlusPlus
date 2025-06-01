@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 
 #define UNUSED_PARAM(T) T
+#define OUT _Out_
 
 #define VEC3_RIGHT glm::vec3(1.0f, 0.0f, 0.0f)
 #define VEC3_UP glm::vec3(0.0f, 1.0f, 0.0f)

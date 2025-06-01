@@ -2,11 +2,14 @@ set(ProjectName CentsEngine)
 set(IncludeFiles
     include/Cents/Application.h
     include/Cents/Common.h
+    include/Cents/Debug.h
     include/Cents/DebugConsole.h
     include/Cents/Input.h
     include/Cents/KeyCodes.h
     include/Cents/Mesh.h
     include/Cents/Model.h
+    include/Cents/Plane.h
+    include/Cents/Ray.h
     include/Cents/Shader.h
     include/Cents/Texture.h
     include/Cents/Window.h
@@ -17,6 +20,7 @@ set(IncludeFiles
 
 set(SourceFiles
     src/Application.cpp
+    src/Debug.cpp
     src/DebugConsole.cpp
     src/Input.cpp
     src/Main.cpp

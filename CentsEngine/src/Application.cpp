@@ -34,14 +34,14 @@ void Application::RenderFrame(float deltaTime)
 
 void Application::Loop()
 {
-    long frame = 0;
+    m_frame = 0;
     float lastFrameTime = (float)glfwGetTime();
     float currentFrameTime = lastFrameTime;
     float deltaTime = currentFrameTime - lastFrameTime;
 
     while (m_window->ShouldClose() == false)
     {
-        frame++;
+        m_frame++;
         lastFrameTime = currentFrameTime;
         currentFrameTime = (float)glfwGetTime();
         deltaTime = currentFrameTime - lastFrameTime;

@@ -20,18 +20,20 @@ protected:
 
 private:
     Shader* m_textureShader = nullptr;
-    Shader* m_whiteShader = nullptr;
+    Shader* m_colorShader = nullptr;
 
     Model* m_quadModel = nullptr;
     Model* m_planeModel = nullptr;
+    Model* m_cubeModel = nullptr;
 
     Texture* m_texture = nullptr;
 
     bool m_debugMode = false;
-    Component::Camera m_camera;
+    Component::Camera* m_camera;
     Component::Transform m_debugCamTransform;
     Component::Transform m_gameCamTransform;
 
+    Component::Transform m_cubeTransform;
     Component::Transform m_playerTransform;
     Component::Transform m_planeTransform;
 };

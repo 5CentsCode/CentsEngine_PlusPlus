@@ -23,6 +23,8 @@ private:
 
 protected:
     Window* m_window;
+
+    long m_frame;
 };
 
 Application* CreateApplication();

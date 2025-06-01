@@ -47,22 +47,40 @@ void Shader::Bind()
     glUseProgram(m_id);
 }
 
+void Shader::SetUniform(const char* name, const int32& value) const
+{
+    int32 uniformLocation = GetUniformLocation(name);
+    glUniform1i(uniformLocation, value);
+}
+
+void Shader::SetUniform(const char* name, const float& value) const
+{
+    int32 uniformLocation = GetUniformLocation(name);
+    glUniform1f(uniformLocation, value);
+}
+
 int32 Shader::GetUniformLocation(const char* name) const
 {
     int uniformLocation = glGetUniformLocation(m_id, name);
     return uniformLocation;
 }
 
+void Shader::SetUniform(const char* name, const glm::vec3& value) const
+{
+    int32 uniformLocation = GetUniformLocation(name);
+    glUniform3fv(uniformLocation, 1, glm::value_ptr(value));
+}
+
+void Shader::SetUniform(const char* name, const glm::vec4& value) const
+{
+    int32 uniformLocation = GetUniformLocation(name);
+    glUniform4fv(uniformLocation, 1, glm::value_ptr(value));
+}
+
 void Shader::SetUniform(const char* name, const glm::mat4& value) const
 {
     int32 uniformLocation = GetUniformLocation(name);
     glUniformMatrix4fv(uniformLocation, 1, false, glm::value_ptr(value));
-}
-
-void Shader::SetUniform(const char* name, const int32& value) const
-{
-    int32 uniformLocation = GetUniformLocation(name);
-    glUniform1i(uniformLocation, value);
 }
 
 void Shader::AttachAndLinkShaders(int32* shaderIds, int32 shaderCount)

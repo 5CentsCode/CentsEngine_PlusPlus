@@ -1,5 +1,8 @@
 #pragma once
 #include "../Common.h"
+#include "../Ray.h"
+#include "../Window.h"
+#include "Transform.h"
 
 namespace Component
 {
@@ -11,6 +14,8 @@ namespace Component
             Perspective = 1
         };
 
+        Camera(const Window* window);
+
         float NearClippingPlane = 0.1f;
         float FarClippingPlane = 1000.0f;
 
@@ -21,5 +26,12 @@ namespace Component
         ProjectionMode ProjectionMode = ProjectionMode::Perspective;
 
         glm::mat4 GetProjectionMatrix() const;
+
+        glm::vec3 ScreenToWorldPoint(const Component::Transform& cameraTransform, const glm::vec3& screenPosition) const;
+        Ray ScreenPointToRay(const Component::Transform& cameraTransform, const glm::vec2& screenPosition) const;
+
+    private:
+
+        const Window* m_window;
     };
 }
